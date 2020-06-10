@@ -16,10 +16,12 @@ class UserController extends Controller
         $password = $request->input('password');
         $users = DB::table('users')->get();
         foreach($users as $user){
-            if($user->name == $username){
+            if($user->name == $username && $password == 1){
                 $posts = DB::select('select * from posts');
                 echo '<a href = "/insert_form">Insert POST</a>.' . "<br>";
                 return view('lists_posts',['posts'=>$posts]);
+            }else{
+                echo "???";
             }
         }
     }
